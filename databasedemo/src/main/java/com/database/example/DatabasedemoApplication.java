@@ -32,23 +32,23 @@ public class DatabasedemoApplication implements CommandLineRunner {
 		logger.info("All users -> {}",dao.findAll());
 		System.out.println("All users -> {}"+dao.findAll());
 		
-		logger.info("User id 13 ->{}",dao.findById(26));
-		System.out.println("find By Id -> {}"+dao.findById(14));
+		logger.info("User id 13 ->{}",dao.findById(15));
+		System.out.println("find By Id -> {}"+dao.findById(15));
 		
-		logger.info("find By Name ->{}",dao.findByName("vaibhav"));
-		System.out.println("find By Name -> {}"+dao.findByName("vaibhav"));
+		logger.info("find By Name ->{}",dao.findByName("prashant"));
+		System.out.println("find By Name -> {}"+dao.findByName("prashant"));
 		
-		logger.info("find By Location ->{}",dao.findByLocation("shegaon"));
-		System.out.println(" find By Location -> {}"+dao.findByLocation("shegaon"));
+		logger.info("find By Location ->{}",dao.findByLocation("pune"));
+		System.out.println(" find By Location -> {}"+dao.findByLocation("pune"));
 		
-		logger.info("delete By Id -> number of rows - {}",dao.deleteById(27));
-		System.out.println("deleted by using id -> {}"+dao.deleteById(27));
+		logger.info("delete By Id -> number of rows - {}",dao.deleteById(16));
+		System.out.println("deleted by using id -> {}"+dao.deleteById(16));
 		
 		
-		logger.info("delete By Name, prashant -> numbers of rows - {}",dao.deleteByName("nikhil"));
-		System.out.println("deleted by using name  -> {}"+dao.deleteByName("nikhil"));
+		logger.info("delete By Name, prashant -> numbers of rows - {}",dao.deleteByName("yash"));
+		System.out.println("deleted by using name  -> {}"+dao.deleteByName("yash"));
 		
-		logger.info("inserting 40 -> number of row -{}",dao.insert(new Person(40,"banti","pune",new Date())));
+		logger.info("inserting 40 -> number of row -{}",dao.insert(new Person(18,"banti","pune",new Date())));
 		  
 	   
 	  
