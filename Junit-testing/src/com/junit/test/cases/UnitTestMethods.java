@@ -10,7 +10,6 @@ public class UnitTestMethods {
 		for(int i:number) {
 			
 			sum+=i;
-			
 		}
 		return sum;	
 	}
