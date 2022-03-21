@@ -60,7 +60,6 @@ public class CourseRepository {
 	 entityManager.detach(course2);
 	 course2.setName("one to many mapping-updated");
 	 
-	 
  }
 	
 

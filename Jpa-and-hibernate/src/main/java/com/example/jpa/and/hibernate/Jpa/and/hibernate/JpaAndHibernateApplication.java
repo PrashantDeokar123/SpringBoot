@@ -24,19 +24,18 @@ public class JpaAndHibernateApplication  implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-     logger.info(" find by id -> {}",repository.findById(2l));
-     System.out.println("find by id -> {} "+repository.findById(2l));
+     logger.info(" find by id -> {}",repository.findById(575l));
+     System.out.println("find by id -> {} "+repository.findById(575l));
   
 	
 
-		Course course=repository.findById(2l);
-		logger.info(" delete by id 2 -> {}",course);
-       
-		repository.save(new Course("entity manager  in 5 step "));
+		Course course=repository.findById(578l);
+		logger.info(" delete by id 576 -> {}",course);
+		  repository.delete(580);
+		repository.save(new Course("spring boot in 10 step"));
 	
         repository.entityManager();
        
        
-        repository.delete(351);
 	}
 }
