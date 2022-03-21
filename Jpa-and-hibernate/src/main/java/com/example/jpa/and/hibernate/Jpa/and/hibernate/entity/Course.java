@@ -1,10 +1,16 @@
 package com.example.jpa.and.hibernate.Jpa.and.hibernate.entity;
 
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="prashant_course")
@@ -13,8 +19,12 @@ public class Course {
 	@Id
 	@GeneratedValue
 	long id;
+	@Column(nullable=false)
 	String name;
-	
+	@CreationTimestamp
+	LocalDateTime created_date;
+	@UpdateTimestamp
+	LocalDateTime last_update_date;
 	public Course() {
 		
 		

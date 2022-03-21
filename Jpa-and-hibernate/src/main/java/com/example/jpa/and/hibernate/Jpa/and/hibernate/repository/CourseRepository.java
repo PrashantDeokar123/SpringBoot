@@ -37,7 +37,31 @@ public class CourseRepository {
 		   return course;
 		   
 	   }
-	
+
+ public void delete(long id) {
+	 
+	Course course= findById(id);
+	 entityManager.remove(course);
+
+ }
+ public void entityManager() {
+	 
+	 Course course1= new Course("hibernate 1");
+	 entityManager.persist(course1);
+	 entityManager.flush();
+	 
+	 entityManager.detach(course1);
+	 course1.setName("one to one mapping-updated");
+	 
+	 Course course2= new Course("hibernate 2");
+	 entityManager.persist(course2);
+	 entityManager.flush();
+	 
+	 entityManager.detach(course2);
+	 course2.setName("one to many mapping-updated");
+	 
+	 
+ }
 	
 
 	

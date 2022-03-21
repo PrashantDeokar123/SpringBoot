@@ -20,7 +20,6 @@ class CourseRepositoryTest {
 	  
 	   @Autowired
 	   CourseRepository repository;
-
 	   
 	   @Test
 		void findById() {

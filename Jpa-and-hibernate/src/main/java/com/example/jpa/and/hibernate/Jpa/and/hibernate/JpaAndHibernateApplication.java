@@ -34,7 +34,9 @@ public class JpaAndHibernateApplication  implements CommandLineRunner{
        
 		repository.save(new Course("entity manager  in 5 step "));
 	
+        repository.entityManager();
        
-      
+       
+        repository.delete(351);
 	}
 }
