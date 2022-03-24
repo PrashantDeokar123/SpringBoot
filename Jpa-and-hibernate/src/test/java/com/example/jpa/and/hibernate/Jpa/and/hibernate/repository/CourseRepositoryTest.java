@@ -18,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.JpaAndHibernateApplication;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Course;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Review;
 @RunWith(Runner.class)
 @SpringBootTest(classes=JpaAndHibernateApplication.class)
 class CourseRepositoryTest {
@@ -29,21 +31,22 @@ class CourseRepositoryTest {
 	  
 	   @Autowired
 	   CourseRepository repository;
-	  
-
+	   @Autowired
+	   EntityManager entityManager;
+	   
 	   
 	   @Test
 		void findById() {
 			
-			Course course =repository.findById(575);
-			assertEquals("hibernate 1",course.getName());
+			Course course =repository.findById(582);
+			assertEquals("hibernate 2",course.getName());
 		}
 	   
 	    @Test
 	    @DirtiesContext
 		void deleteById_basic() {
-			repository.deleteById(580l);
-			assertNull(repository.findById(580l));
+			repository.deleteById(588l);
+			assertNull(repository.findById(588l));
 			
 		}
 		
@@ -51,16 +54,38 @@ class CourseRepositoryTest {
 		@DirtiesContext
 		void saveMethod() {
 			
-			Course course= repository.findById(2);
-			assertEquals("spring in 5 step",course.getName());
+			Course course= repository.findById(584);
+			assertEquals("hibernate 1",course.getName());
 			
 			course.setName("junit and unit testing in 15 step");
 			repository.save(course);
 			
-			Course course1= repository.findById(2);
+			Course course1= repository.findById(584);
 			assertEquals("junit and unit testing in 15 step", course1.getName());
 			
+			
 		}
+		@Test
+		void entityManager() {
+			
+			repository.entityManager();
+		}
+		@Test
+		@Transactional
+		public void retriveReviewForCourse() {
+			
+			Course course=repository.findById(1110);
+			logger.info("find review for course",course.getReview());
+		}
+		@Test
+		@Transactional
+		public void retriveCourseForReview() {
+			
+			Review review = entityManager.find(Review.class,2001l);
+			logger.info("find review for course",review.getCourse());
+		}
+		
+	
 		
 		
 

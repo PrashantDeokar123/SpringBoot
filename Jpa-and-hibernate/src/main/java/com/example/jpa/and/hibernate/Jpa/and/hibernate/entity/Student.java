@@ -7,42 +7,39 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="prashant_course")
-
-public class Course {
+@Table(name="prashant_student")
+public class Student {
 
 	@Id
 	@GeneratedValue
 	long id;
 	@Column(nullable=false)
 	String name;
-	@OneToMany(mappedBy="course")
-	private List<Review> review =new ArrayList<>();
-	@ManyToMany(mappedBy="course")
-	private List<Student> student =new ArrayList<>();
+
+	@OneToOne(fetch=FetchType.LAZY)
+	private Passport passport;
+	@ManyToMany
+	private List<Course> courses =new ArrayList<>();
 	
-	@CreationTimestamp
-	LocalDateTime created_date;
-	@UpdateTimestamp
-	LocalDateTime last_update_date;
-	public Course() {
+	public Student() {
 		
 		
 	}
 
 
-	public Course(String name) {
+	public Student(String name) {
 		super();
 		this.name = name;
 	}
@@ -68,31 +65,30 @@ public class Course {
 	}
 
 
-	public List<Review> getReview() {
-		return review;
+	public Passport getPassport() {
+		return passport;
 	}
 
 
-	public void addReview(Review review) {
-		this.review.add(review);
+	public void setPassport(Passport passport) {
+		this.passport = passport;
 	}
-	public void removeReview(Review review) {
-		this.review.remove(review);
-	}
-
-	public List<Student> getStudent() {
-		return student;
-	}
+	
 
 
-	public void addStudent(Student student) {
-		this.student.add(student);
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+
+	public void addCourses(Course courses) {
+		this.courses.add(courses);
 	}
 
 
 	@Override
 	public String toString() {
-		return String.format("Course [id=%s, name=%s]", id, name);
+		return String.format("Student[%s]", name);
 	}
 	
 }
