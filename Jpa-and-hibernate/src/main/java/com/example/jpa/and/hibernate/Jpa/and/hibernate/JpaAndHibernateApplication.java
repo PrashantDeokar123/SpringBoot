@@ -1,5 +1,6 @@
 package com.example.jpa.and.hibernate.Jpa.and.hibernate;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Course;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.FullTimeEmployee;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.PartTimeEmployee;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Review;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Student;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.repository.CourseRepository;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.repository.EmployeeRepository;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.repository.StudentRepository;
 
 @SpringBootApplication
@@ -24,6 +29,9 @@ public class JpaAndHibernateApplication  implements CommandLineRunner{
     
     @Autowired
     StudentRepository studentrepository;
+    
+    @Autowired
+    EmployeeRepository employeerepository;
 	public static void main(String[] args) {
 		SpringApplication.run(JpaAndHibernateApplication.class, args);
 	}
@@ -45,11 +53,27 @@ public class JpaAndHibernateApplication  implements CommandLineRunner{
 		studentrepository.saveStudent();
 		
 		*/
+		/*
 		courserepository.ReviewForCourse();
       
 		List<Review> reviews =new ArrayList<>();
 		reviews.add(new Review("1","most popular"));
 		reviews.add(new Review("4","popular course"));
        courserepository.addReviewForCourse(1214, reviews);
+       
+	*/
+		/*
+		studentrepository.insertHardCodedStudentAndCourse();
+		studentrepository.insertStudentAndCourse(new Student("nishan"),new Course("software testing"));
+		*/
+		//employeerepository.insert(new FullTimeEmployee("BADRI",new BigDecimal(1000)));
+		//employeerepository.insert(new PartTimeEmployee("KETUL",new BigDecimal(50)));
+		//logger.info("retrieve all employees",employeerepository.retrieveEmployees());
+	   
+		logger.info("retrieve full time  employees",employeerepository.retrieveFullTimeEmployee());
+		logger.info("retrieve part time employees",employeerepository.retrievePartTimeEmployee());
+
+		
+		
 	}
 }

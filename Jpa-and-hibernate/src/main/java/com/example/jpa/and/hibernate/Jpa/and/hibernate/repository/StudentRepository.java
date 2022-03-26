@@ -43,6 +43,34 @@ public void updateTest() {
 
       
 	}
+    public void insertHardCodedStudentAndCourse() {
+	
+	Student student =new Student("rushi");
+    Course course=new Course("bootstrap");
+    
+	
+	
+	student.addCourses(course);
+	course.addStudent(student);
+	
+	entityManager.persist(student);
+	entityManager.persist(course);
+	
+	entityManager.persist(student);
+}
+    
+    public void insertStudentAndCourse(Student student,Course course) {
+    	
+   
+        
+        student.addCourses(course);
+    	course.addStudent(student);
+    	
+    	entityManager.persist(student);
+    	entityManager.persist(course);
+    	
+    
+    }
  
 
 	

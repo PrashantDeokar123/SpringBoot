@@ -63,6 +63,18 @@ class StudentRepositoryTest {
 		   
 	  
 	   }	
+	   
+	   @Test
+	   @Transactional
+	   public void retriveStudentAndCourse() {
+		   
+		 Student student= entityManager.find(Student.class,781l);
+		 logger.info("student ",student);
+		 logger.info("student ",student.getCourses());
+	
+		   
+		   
+	   }
 		
 		
 

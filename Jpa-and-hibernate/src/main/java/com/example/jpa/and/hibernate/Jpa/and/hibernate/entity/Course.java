@@ -29,8 +29,9 @@ public class Course {
 	String name;
 	@OneToMany(mappedBy="course")
 	private List<Review> review =new ArrayList<>();
-	@ManyToMany(mappedBy="course")
-	private List<Student> student =new ArrayList<>();
+	
+	@ManyToMany(mappedBy="courses")
+	private List<Student> students =new ArrayList<>();
 	
 	@CreationTimestamp
 	LocalDateTime created_date;
@@ -81,12 +82,12 @@ public class Course {
 	}
 
 	public List<Student> getStudent() {
-		return student;
+		return students;
 	}
 
 
 	public void addStudent(Student student) {
-		this.student.add(student);
+		this.students.add(student);
 	}
 
 
