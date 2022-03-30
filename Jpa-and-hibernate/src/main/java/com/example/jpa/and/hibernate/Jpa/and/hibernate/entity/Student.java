@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -42,6 +44,9 @@ public class Student {
    
 		   
 	private List<Course> courses =new ArrayList<>();
+	
+	@Embedded
+	private Address address;
 	
 	public Student() {
 		
@@ -93,6 +98,17 @@ public class Student {
 
 	public void addCourses(Course courses) {
 		this.courses.add(courses);
+	}
+	
+
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 

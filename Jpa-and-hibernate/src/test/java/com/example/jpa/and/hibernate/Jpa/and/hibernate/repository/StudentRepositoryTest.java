@@ -20,62 +20,61 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.JpaAndHibernateApplication;
+import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Address;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Course;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Passport;
 import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Student;
+
 @RunWith(Runner.class)
-@SpringBootTest(classes=JpaAndHibernateApplication.class)
+@SpringBootTest(classes = JpaAndHibernateApplication.class)
 class StudentRepositoryTest {
 
-	Logger logger =LoggerFactory.getLogger(this.getClass());
-	  
-	   
-	   @Autowired
-	   EntityManager entityManager;
-	   @Autowired
-	   StudentRepository repository;
-	  
-	   @Test
-	   public void retriveStudentWithPassport() {
-		   
-		   Student student =entityManager.find(Student.class,787l);
-		   logger.info("student details -> {}",student);
-		   logger.info("passport is -> {}",student.getPassport());
-		   
-		   
-	   }
-	   @Test
-	   @Transactional
-	   public void retrivePassportWithStudent() {
-		   
-		  Passport passport =entityManager.find(Passport.class,4001l);
-		   logger.info("passport details -> {}",passport);
-		   logger.info("student is-> {}",passport.getStudent());
-		   
-		   
-	   }
-	   
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	   @Test
-	   public void TestUpdateMethod()
-	   {
-		   repository.updateTest();
-		   
-	  
-	   }	
-	   
-	   @Test
-	   @Transactional
-	   public void retriveStudentAndCourse() {
-		   
-		 Student student= entityManager.find(Student.class,781l);
-		 logger.info("student ",student);
-		 logger.info("student ",student.getCourses());
+	@Autowired
+	EntityManager entityManager;
+	@Autowired
+	StudentRepository repository;
+
+	@Test
+	@Transactional
+	public void setAddressOfStudent() {
+
+		Student student = entityManager.find(Student.class, 1386l);
+
+		student.setAddress(new Address("at post chikhli", "at post shegaon", "buldhana"));
+		entityManager.flush();
+
+		
 	
-		   
-		   
-	   }
 		
-		
+
+	}
+
+	@Test
+	@Transactional
+	public void retrivePassportWithStudent() {
+
+		Passport passport = entityManager.find(Passport.class, 4001l);
+		logger.info("passport details -> {}", passport);
+		logger.info("student is-> {}", passport.getStudent());
+
+	}
+
+	@Test
+	public void TestUpdateMethod() {
+		repository.updateTest();
+
+	}
+
+	@Test
+	@Transactional
+	public void retriveStudentAndCourse() {
+
+		Student student = entityManager.find(Student.class, 781l);
+		logger.info("student ", student);
+		logger.info("student ", student.getCourses());
+
+	}
 
 }

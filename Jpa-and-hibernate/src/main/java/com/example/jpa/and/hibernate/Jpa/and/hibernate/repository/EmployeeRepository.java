@@ -22,36 +22,34 @@ import com.example.jpa.and.hibernate.Jpa.and.hibernate.entity.Student;
 @Transactional
 public class EmployeeRepository {
 
-	private Logger logger=LoggerFactory.getLogger(this.getClass());
-     @Autowired
-	 EntityManager entityManager;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	EntityManager entityManager;
 
-     //insert employee 
-     public void insert(Employee employee) {
-    	 
-    	 entityManager.persist(employee);
-    	 
-     }
- //retrive employee
-     public List<Employee> retrieveEmployees(){
-    	 
-    	 return entityManager.createQuery
-    			("Select e From Employee e",Employee.class).getResultList();
-    
-    	
-     }
-     
-     //retrieve full time employee
-     public List<FullTimeEmployee> retrieveFullTimeEmployee(){
-    	 
-    	 return entityManager.createQuery(" select e from FullTimeEmployee e",FullTimeEmployee.class).getResultList();
-     }
-     
-     //retrieve full time employee
-     public List<PartTimeEmployee> retrievePartTimeEmployee(){
-    	 
-    	 return entityManager.createQuery(" select e from PartTimeEmployee e",PartTimeEmployee.class).getResultList();
-     }
+	// insert employee
+	public void insert(Employee employee) {
 
-	
+		entityManager.persist(employee);
+
+	}
+
+	// retrive employee
+	public List<Employee> retrieveEmployees() {
+
+		return entityManager.createQuery("Select e From Employee e", Employee.class).getResultList();
+
+	}
+
+	// retrieve full time employee
+	public List<FullTimeEmployee> retrieveFullTimeEmployee() {
+
+		return entityManager.createQuery(" select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
+	}
+
+	// retrieve full time employee
+	public List<PartTimeEmployee> retrievePartTimeEmployee() {
+
+		return entityManager.createQuery(" select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
+	}
+
 }

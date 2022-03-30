@@ -45,8 +45,8 @@ public void updateTest() {
 	}
     public void insertHardCodedStudentAndCourse() {
 	
-	Student student =new Student("rushi");
-    Course course=new Course("bootstrap");
+	Student student =new Student("VIKI");
+    Course course=new Course("JAVA SCRIPT");
     
 	
 	
