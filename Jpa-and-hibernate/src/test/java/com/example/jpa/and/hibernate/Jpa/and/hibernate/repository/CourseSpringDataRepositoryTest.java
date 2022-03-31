@@ -43,6 +43,7 @@ class CourseSpringDataRepositoryTest {
 	   CourseSpringDataRepository repository;
 	  @Autowired
 	  EntityManager entityManager;
+	  
 	
 	
 	  /* @Test
