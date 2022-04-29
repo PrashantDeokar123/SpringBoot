@@ -38,8 +38,9 @@ public class CourseRepository {
 			// insert
 		} else {
 			entityManager.merge(course);
-			// update
+			//update
 		}
+		
 		return course;
 
 	}
@@ -71,12 +72,12 @@ public class CourseRepository {
 
 	public void ReviewForCourse() {
 
-		Course course = entityManager.find(Course.class, 1213l);
+		Course course = entityManager.find(Course.class, 1447l);
 		logger.info("course", course);
 		logger.info("review of course", course.getReview());
 
-		Review review = new Review(ReviewRating.ONE, "great hands-stuff.");
-		Review review1 = new Review(ReviewRating.THREE, "great");
+		Review review = new Review(ReviewRating.THREE, "F");
+		Review review1 = new Review(ReviewRating.THREE, "F");
 
 		course.addReview(review);
 		review.setCourse(course);
